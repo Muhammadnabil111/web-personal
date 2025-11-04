@@ -1,0 +1,818 @@
+@import url("https://fonts.googleapis.com/css?family=Maven+Pro:400,700");
+body {
+  font-family: "Maven Pro", sans-serif;
+  padding-top: 70px;
+}
+
+.full-screen {
+  padding: 8rem 0;
+}
+
+.small-text {
+  color: #b8b8b8;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50px;
+  letter-spacing: 0.2px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  list-style: none;
+}
+
+a {
+  font-weight: normal;
+  text-decoration: none !important;
+  transition: all 0.4s ease;
+}
+a:hover {
+  color: #7ab2d3 !important;
+}
+
+.navbar-brand .uil {
+  font-size: 40px;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #b8b8b8;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 2.8em;
+  margin: 24px 0;
+}
+
+h2 {
+  color: #ffffff;
+  font-size: 2.4em;
+  font-weight: bold;
+}
+
+h3 {
+  color: #ffffff;
+}
+
+h3,
+b,
+strong {
+  font-weight: bold;
+}
+
+.custom-btn {
+  background: #e8e8e8;
+  color: #5b5b5b;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 13px 29px;
+  font-size: 14px;
+  line-height: normal;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+.custom-btn:hover {
+  color: #7ab2d3;
+}
+.custom-btn1 {
+  background-color: transparent;
+  color: #ffffff;
+  font-weight: 900;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 14px;
+  line-height: normal;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 2px solid #fff;
+  margin-bottom: -20px;
+  margin-top: -20px;
+}
+.custom-btn1:hover {
+  background: #ffffff;
+  color: transparent;
+}
+.custom-btn.custom-btn-bg {
+  background: #7ab2d3;
+  color: #ffffff;
+}
+.custom-btn.custom-btn-bg:hover {
+  background: #474559;
+  color: #ffffff !important;
+}
+
+.animated {
+  position: relative;
+}
+
+.animated-info {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 5px;
+  min-width: 260px;
+  position: relative;
+}
+
+.animated-item {
+  background: linear-gradient(
+    90deg,
+    #f24e1e,
+    /* Oranye (utama) */ #a259ff,
+    /* Hijau (keunguan) */ #1abcfe,
+    /* Biru */ #0acf83 /* Ungu */
+  );
+  color: white; /* Warna teks opsional */
+  -webkit-background-clip: text; /* Jika ingin gradien pada teks */
+  -webkit-text-fill-color: transparent;
+}
+
+.animated-item {
+  font-size: 38px;
+  line-height: inherit;
+  display: block;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  animation: BottomTotop 6s linear infinite 0s;
+}
+.animated-item:nth-child(2n + 2) {
+  animation-delay: 2s;
+}
+.animated-item:nth-child(3n + 3) {
+  animation-delay: 4s;
+}
+
+@keyframes BottomTotop {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  30% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.about {
+  margin-top: -2em;
+}
+.about p {
+  text-align: justify;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999999;
+  height: 55px; /* Atur tinggi navbar */
+  display: flex; /* Flexbox untuk tata letak elemen dalam navbar */
+  align-items: center; /* Elemen dalam navbar dipusatkan secara vertikal */
+  padding: 0 20px; /* Ruang kiri dan kanan */
+  background-color: rgba(10, 9, 9, 0.7) !important; /* Warna transparan (putih dengan 70% opasitas) */
+  backdrop-filter: blur(10px) !important; /* Efek blur pada background */
+  border-bottom: 1px solid #1f1f1f !important;
+}
+
+.navbar-brand {
+  display: block;
+  width: 150px; /* Sesuaikan */
+  height: 45px; /* Sesuaikan */
+  background-image: url(../images/logo1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 99999;
+}
+.navbar-expand-sm .navbar-nav .nav-link {
+  padding: 0 20px;
+}
+
+.nav-link {
+  font-weight: bold;
+  font-size: 15px;
+  overflow: hidden;
+}
+.nav-link span {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s;
+}
+.nav-link span:before {
+  position: absolute;
+  top: 100%;
+  content: attr(data-hover);
+  transform: translate3d(0, 0, 0);
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #ffffff;
+}
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #7ab2d3;
+  font-weight: bold;
+}
+
+.navbar-light .navbar-toggler-icon {
+  background: none;
+}
+
+.navbar-toggler {
+  border: 0;
+  padding: 0;
+  width: 32px;
+  height: 65px;
+  line-height: 32px;
+  outline: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.navbar-toggler:focus {
+  outline: none;
+}
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:first-child {
+  transform: rotate(45deg);
+  top: 6px;
+}
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:nth-child(3) {
+  display: none;
+}
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:last-child {
+  transform: rotate(-45deg);
+  bottom: 1px;
+}
+.navbar-toggler .navbar-toggler-icon {
+  background: #fdfdfd;
+  display: block;
+  width: 85%;
+  height: 3px;
+  margin: 6px 0;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.copyright-text {
+  font-size: 16px;
+  font-weight: normal;
+  display: block;
+}
+
+/* Style for the main FAQ container */
+.faq-container {
+  max-width: 550px; /* Limit the width for better readability */
+  margin: 50px auto; /* Center the container and add vertical spacing */
+  padding: 10px;
+  color: #ffffff; /* Base text color */
+}
+
+/* Style for the main title */
+.faq-container h2 {
+  text-align: left;
+  margin-bottom: 40px;
+  color: #ffffff; /* Dark blue color for the title */
+}
+
+.dark-mode .faq-container h2 {
+  color: #ffffff;
+}
+
+/* Style for each FAQ item */
+.faq-item {
+  border-bottom: 2px solid #ddd; /* Light gray border between items */
+  overflow: hidden; /* Hide overflowing content */
+}
+
+/* Style for the question buttons */
+.faq-question {
+  background-color: rgba(255, 255, 255, 0); /* Light gray background */
+  width: 100%;
+  padding: 20px;
+  padding-left: 0;
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.4s ease; /* Smooth background transition on hover */
+}
+
+/* Hover effect for question buttons */
+.faq-question:hover {
+  color: #7ab2d3; /* Slightly darker gray on hover */
+}
+
+/* Style for the arrow icon */
+.faq-question .arrow {
+  position: absolute;
+  right: 20px;
+  transition: transform 0.3s ease; /* Smooth rotation transition */
+}
+
+/* Rotate the arrow when the question is active (expanded) */
+.faq-question.active .arrow {
+  transform: rotate(180deg); /* Rotate arrow 180 degrees */
+}
+
+/* Style for the answer sections */
+.faq-answer {
+  max-height: 0; /* Initially hide the answer */
+  overflow: hidden;
+  transition: max-height 0.3s ease; /* Smooth transition for expanding */
+  background-color: rgba(255, 255, 255, 0); /* White background for answers */
+}
+
+/* Style for the answer text */
+.faq-answer ul {
+  list-style: none;
+  padding: 0;
+}
+.faq-answer ul li {
+  padding: 8px;
+  padding-right: 20px;
+  font-size: 16px;
+  line-height: 1.5; /* Increase line height for better readability */
+  color: #ffffff; /* Slightly lighter text color for answers */
+  text-align: justify;
+  background: rgba(224, 224, 224, 0);
+  margin: 5px 0;
+  padding-left: 0;
+  border-radius: 5px;
+}
+/* Harmonious color palette for the body background */
+body {
+  background-color:#0F0E0E; /* Very light blue-gray background */
+}
+
+.owl-carousel .owl-nav span {
+  display: none;
+}
+.owl-carousel .owl-nav .owl-prev:before,
+.owl-carousel .owl-nav .owl-next:before {
+  background: none;
+  padding: 0;
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-family: "unicons";
+  font-size: 100px;
+  line-height: normal;
+}
+.owl-carousel .owl-nav .owl-prev:before {
+  content: "\e833";
+  left: -45px;
+}
+.owl-carousel .owl-nav .owl-next:before {
+  content: "\e836";
+  right: -45px;
+}
+
+.owl-theme .owl-nav [class*="owl-"] {
+  background-color: aqua;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  color: #fff;
+}
+.owl-theme .owl-nav [class*="owl-"]:hover {
+  color: #7ab2d3;
+}
+.owl-theme .owl-dots .owl-dot {
+  outline: none;
+}
+.owl-theme .owl-dots .owl-dot span {
+  width: 8px;
+  height: 8px;
+}
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+  background: #5b5b5b;
+}
+
+.contact {
+  margin-top: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+}
+.footer-brand {
+  display: block;
+  width: 150px; /* Sesuaikan */
+  height: 60px; /* Sesuaikan */
+  background-image: url(../images/logo1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; /* Pastikan gambar di tengah */
+  margin: 0 auto; /* Tengah secara horizontal */
+}
+.list-unstyled2 {
+  padding-top: 20px;
+  gap: 25px;
+  font-size: 25px;
+}
+.thank-you-message {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffffff; /* Sesuaikan dengan desain */
+}
+.footer-16371 {
+  background: url(../images/Frame%20110.svg);
+  background-size: cover;
+  padding: 4rem 0;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
+.footer-16371 .nav-links {
+  padding: 0;
+  margin: 0;
+}
+.footer-16371 .nav-links1 li {
+  display: inline-block;
+}
+.footer-16371 .nav-links1 li a {
+  padding: 10px;
+  color: #ffffff;
+  gap: 25px;
+  font-size: 15px;
+}
+.footer-16371 .social h3 {
+  font-weight: bold;
+  font-size: 18px;
+  color: #efefef;
+}
+.footer-16371 .social ul li {
+  display: inline-block;
+}
+.footer-16371 .social ul li a {
+  display: inline-block;
+  padding: 10px;
+}
+.footer-16371 .social ul li.in a {
+  color: #df588a;
+}
+.footer-16371 .social ul li.gm a {
+  color: #009aa7;
+}
+.footer-16371 .social ul li.ld a {
+  color: #0077b5;
+}
+.footer-16371 .social ul li.spo a {
+  color: #1db954;
+}
+.footer-16371 .social ul li.git a {
+  color: #6e7681;
+}
+.footer-16371 .social ul li.dr a {
+  color: #ea4c89;
+}
+.footer-16371 .social ul li.fig a {
+  background: linear-gradient(
+    90deg,
+    #f24e1e,
+    /* Oranye (utama) */ #a259ff,
+    /* Hijau (keunguan) */ #1abcfe,
+    /* Biru */ #0acf83 /* Ungu */
+  );
+  color: white; /* Warna teks opsional */
+  -webkit-background-clip: text; /* Jika ingin gradien pada teks */
+  -webkit-text-fill-color: transparent;
+}
+.footer-16371 .copyright p {
+  color: #ffffff;
+  font-size: 15px;
+}
+.social-links {
+  display: flex; /* Mengaktifkan flexbox */
+  gap: 20px; /* Jarak antar ikon */
+}
+
+.social-links .uil {
+  font-size: 25px;
+  margin: 5px 0;
+}
+.social-links .fa-dribbble {
+  color: #ea4c89;
+}
+.social-links .fa-instagram {
+  background: linear-gradient(45deg, #f77737, #e4405f, #4c68d7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.social-links .fa-linkedin {
+  color: #0077b5;
+}
+.social-links .fa-figma {
+  background: linear-gradient(
+    90deg,
+    #f24e1e,
+    /* Oranye (utama) */ #a259ff,
+    /* Hijau (keunguan) */ #1abcfe,
+    /* Biru */ #0acf83 /* Ungu */
+  );
+  color: white; /* Warna teks opsional */
+  -webkit-background-clip: text; /* Jika ingin gradien pada teks */
+  -webkit-text-fill-color: transparent;
+}
+
+.top-message {
+  display: none;
+  position: fixed;
+  bottom: -16px;
+  left: 0;
+  width: 100%;
+  background: #ff5722; /* Warna latar belakang */
+  padding: 10px 0;
+  text-align:left;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 1050; /* Pastikan berada di atas elemen lain */
+  transition: transform 0.3s ease-in-out;
+}
+
+.top-message p {
+  color: #fff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-message a.aaclose {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 10px;
+  padding: 0 8px;
+  transition: 0.3s ease;
+}
+
+.top-message a.aaclose:hover {
+  color: #000; /* Warna berubah saat hover */
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
+
+/* Animasi saat alert ditutup */
+.top-message.hide {
+  transform: translateY(-100%);
+}
+
+@media (min-width: 1270px) {
+  .owl-theme .owl-dots {
+    position: relative;
+    bottom: 50px;
+  }
+}
+@media (max-width: 991px) {
+  .footer-16371 {
+    background: url(../images/Frame%201110.svg); /* Gambar khusus untuk mobile */
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+  }
+  .thank-you-message {
+    font-size: 24px; /* Sesuaikan ukuran */
+  }
+  .small-text {
+    display: none;
+  }
+  .top-message {
+    display: block;
+  }
+  .full-screen {
+    padding-bottom: 4rem;
+  }
+  .about {
+    margin-top: -6em;
+  }
+  h1 {
+    font-size: 2.4em;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  .social-links {
+    justify-content: center; /* Pusatkan secara horizontal */
+    align-items: center;
+  }
+  .about p {
+    text-align: center;
+  }
+  .faq-container h2 {
+    text-align: center;
+  }
+  .faq-question {
+    font-size: 16px;
+    text-align: left;
+    padding-left: 20px;
+  }
+  .faq-answer ul li {
+    line-height: 1.5;
+    font-size: 14px;
+    text-align: justify;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .animated-item {
+    font-size: 1.6rem;
+  }
+  .custom-btn {
+    display: none;
+  }
+
+  .about-image {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .thank-you-message {
+    font-size: 18px; /* Sesuaikan ukuran */
+  }
+  h1 {
+    font-size: 2.1em;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  .social-links {
+    justify-content: center; /* Pusatkan secara horizontal */
+    align-items: center;
+  }
+  .about p {
+    text-align: center;
+  }
+  .faq-container h2 {
+    text-align: center;
+  }
+  .faq-question {
+    font-size: 16px;
+    text-align: left;
+    padding-left: 20px;
+  }
+  .faq-answer ul li {
+    line-height: 1.5;
+    font-size: 14px;
+    text-align: justify;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .animated-item {
+    font-size: 1.6rem;
+  }
+  .custom-btn-group {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #161616;
+    text-align: center;
+    padding-top: 50px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Saat navbar terbuka */
+  .navbar-collapse.show {
+    transform: translateY(0);
+  }
+
+  /* Menu dalam navbar */
+  .navbar-nav {
+    width: 100%;
+  }
+
+  .navbar-nav .nav-item {
+    margin: 10px 0;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .navbar-toggler {
+    position: relative;
+    z-index: 1100;
+  }
+  .navbar-expand-sm .navbar-nav .nav-link {
+    padding: 3px 20px;
+  }
+}
+@media (max-width: 580px) {
+  .animated-info {
+    min-width: 200px;
+  }
+  .animated-item {
+    font-size: 30px;
+  }
+
+  .custom-btn-group {
+    text-align: center;
+  }
+
+  .custom-btn {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .owl-theme .owl-nav {
+    display: none;
+  }
+
+  .timeline-info small {
+    display: block;
+    margin: 10px 0 0 0;
+  }
+}
+@media (max-width: 320px) {
+  .animated-text {
+    margin-top: 0;
+  }
+
+  .full-screen {
+    padding: 4rem 0;
+  }
+
+  .mobile-block {
+    display: block;
+  }
+
+  .contact-info {
+    flex-direction: column;
+  }
+
+  .social-links li {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
