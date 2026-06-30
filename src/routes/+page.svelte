@@ -106,11 +106,11 @@
 <Navbar />
 
 <div
-	class="relative z-10 w-full max-w-6xl mx-auto px-6 pt-32 pb-24 flex flex-col gap-32"
+	class="relative z-10 w-full max-w-6xl mx-auto px-6 pt-20 sm:pt-32 pb-24 flex flex-col gap-32"
 >
 	<!-- Hero Section -->
 	<header
-		class="flex flex-col items-center text-center gap-6 fade-in-on-load pt-12"
+		class="flex flex-col items-center text-center gap-6 fade-in-on-load pt-4 sm:pt-8"
 	>
 		<div
 			class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-4"
