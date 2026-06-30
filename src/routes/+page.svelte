@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from "$app/paths";
 	import AuraBackground from "$lib/components/AuraBackground.svelte";
 	import Marquee from "$lib/components/Marquee.svelte";
 	import Navbar from "$lib/components/Navbar.svelte";
@@ -10,7 +11,7 @@
 		Map,
 		Globe,
 		MapPin,
-		X
+		X,
 	} from "lucide-svelte";
 
 	let tools = [
@@ -36,49 +37,61 @@
 			title: "GeoPortal Dashboard Design System",
 			category: "Mobile Design",
 			role: "UX/UI Designer",
-			img: "src/images/project/Group2362.png",
-			description: "This project was created to address the complex data visualization needs of urban planners, providing a streamlined mobile interface for geospatial data analysis.",
-			designThinking: "The design process began with extensive user research, followed by wireframing and iterative prototyping. We focused on clear typography, accessible color palettes for maps, and intuitive navigation gestures."
+			img: "/images/project/Group2362.png",
+			description:
+				"This project was created to address the complex data visualization needs of urban planners, providing a streamlined mobile interface for geospatial data analysis.",
+			designThinking:
+				"The design process began with extensive user research, followed by wireframing and iterative prototyping. We focused on clear typography, accessible color palettes for maps, and intuitive navigation gestures.",
 		},
 		{
 			title: "Uber Eats App Redesign",
 			category: "Mobile Design",
 			role: "GIS Developer",
-			img: "src/images/project/Group2357.png",
-			description: "A conceptual redesign of the Uber Eats app focusing on improved mapping features, order tracking precision, and a cleaner user interface.",
-			designThinking: "I analyzed the current app's pain points, created user journey maps, and designed a more seamless flow from restaurant selection to delivery tracking, incorporating better spatial visualization."
+			img: "/images/project/Group2357.png",
+			description:
+				"A conceptual redesign of the Uber Eats app focusing on improved mapping features, order tracking precision, and a cleaner user interface.",
+			designThinking:
+				"I analyzed the current app's pain points, created user journey maps, and designed a more seamless flow from restaurant selection to delivery tracking, incorporating better spatial visualization.",
 		},
 		{
 			title: "To-Do App",
 			category: "Mobile Design",
 			role: "Product Designer",
-			img: "src/images/project/group.png",
-			description: "A minimalist task management application designed for focus and productivity, reducing cognitive load through a clean aesthetic.",
-			designThinking: "The approach centered around minimalism. I stripped away non-essential features, focusing on quick task entry, satisfying completion animations, and a calm color palette to reduce stress."
+			img: "/images/project/group.png",
+			description:
+				"A minimalist task management application designed for focus and productivity, reducing cognitive load through a clean aesthetic.",
+			designThinking:
+				"The approach centered around minimalism. I stripped away non-essential features, focusing on quick task entry, satisfying completion animations, and a calm color palette to reduce stress.",
 		},
 		{
 			title: "Ferarri Web Redesign",
 			category: "Desktop / PC Design",
 			role: "Geospatial Analyst",
-			img: "src/images/project/group1.png",
-			description: "A dynamic web experience for Ferrari, highlighting performance and luxury through high-quality imagery and smooth interactions.",
-			designThinking: "The design emphasizes motion and elegance. I used a dark theme to make the red colors pop, incorporated subtle scroll animations, and ensured the layout reflected the premium nature of the brand."
+			img: "/images/project/group1.png",
+			description:
+				"A dynamic web experience for Ferrari, highlighting performance and luxury through high-quality imagery and smooth interactions.",
+			designThinking:
+				"The design emphasizes motion and elegance. I used a dark theme to make the red colors pop, incorporated subtle scroll animations, and ensured the layout reflected the premium nature of the brand.",
 		},
 		{
 			title: "The Batman Web App",
 			category: "Desktop / PC Design",
 			role: "UI Designer",
-			img: "src/images/project/group2.png",
-			description: "An immersive promotional web application for 'The Batman', featuring interactive elements and deep lore integration.",
-			designThinking: "I adopted a dark, gritty aesthetic to match the film's tone. The UI uses sharp angles, stark contrasts, and interactive 'clues' that users can discover, gamifying the browsing experience."
+			img: "/images/project/group2.png",
+			description:
+				"An immersive promotional web application for 'The Batman', featuring interactive elements and deep lore integration.",
+			designThinking:
+				"I adopted a dark, gritty aesthetic to match the film's tone. The UI uses sharp angles, stark contrasts, and interactive 'clues' that users can discover, gamifying the browsing experience.",
 		},
 		{
 			title: "Steam Web Redesign",
 			category: "Desktop / PC Design",
 			role: "GIS Analyst",
-			img: "src/images/project/group3.png",
-			description: "A modernized interface for the Steam web storefront, improving discoverability, game presentation, and community features.",
-			designThinking: "The goal was to declutter the storefront. I implemented a card-based layout for better readability, improved the search and filtering UX, and gave more prominence to community reviews and gameplay media."
+			img: "/images/project/group3.png",
+			description:
+				"A modernized interface for the Steam web storefront, improving discoverability, game presentation, and community features.",
+			designThinking:
+				"The goal was to declutter the storefront. I implemented a card-based layout for better readability, improved the search and filtering UX, and gave more prominence to community reviews and gameplay media.",
 		},
 	];
 
@@ -265,7 +278,7 @@
 				>
 					<!-- Image -->
 					<img
-						src={project.img}
+						src="{base}{project.img}"
 						alt={project.title}
 						class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
 					/>
@@ -399,82 +412,93 @@
 	</footer>
 </div>
 
-	<!-- Project Modal View -->
-	{#if selectedProject}
+<!-- Project Modal View -->
+{#if selectedProject}
+	<div
+		class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 fade-in-on-load"
+	>
+		<!-- Backdrop -->
 		<div
-			class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 fade-in-on-load"
+			class="absolute inset-0 bg-[#030305]/80 backdrop-blur-md"
+			onclick={() => (selectedProject = null)}
+			aria-hidden="true"
+		></div>
+
+		<!-- Modal Content -->
+		<div
+			class="relative w-full max-w-3xl bg-[#0a0a0c]/90 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
 		>
-			<!-- Backdrop -->
-			<div
-				class="absolute inset-0 bg-[#030305]/80 backdrop-blur-md"
+			<!-- Close button -->
+			<button
+				class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 text-white/70 hover:text-white hover:bg-black/80 backdrop-blur-md transition-colors"
 				onclick={() => (selectedProject = null)}
-				aria-hidden="true"
-			></div>
-
-			<!-- Modal Content -->
-			<div
-				class="relative w-full max-w-3xl bg-[#0a0a0c]/90 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
 			>
-				<!-- Close button -->
-				<button
-					class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 text-white/70 hover:text-white hover:bg-black/80 backdrop-blur-md transition-colors"
-					onclick={() => (selectedProject = null)}
-				>
-					<X size={20} />
-				</button>
+				<X size={20} />
+			</button>
 
-				<div class="overflow-y-auto hide-scrollbar flex-1">
-					<!-- Image Header -->
-					<div class="w-full relative bg-black/50">
-						<img
-							src={selectedProject.img}
-							alt={selectedProject.title}
-							class="w-full h-auto object-contain block"
-						/>
-						<div
-							class="absolute inset-0 bg-gradient-to-t from-[#0a0a0c]/90 via-transparent to-transparent pointer-events-none"
-						></div>
+			<div class="overflow-y-auto hide-scrollbar flex-1">
+				<!-- Image Header -->
+				<div class="w-full relative bg-black/50">
+					<img
+						src="{base}{selectedProject.img}"
+						alt={selectedProject.title}
+						class="w-full h-auto object-contain block"
+					/>
+					<div
+						class="absolute inset-0 bg-gradient-to-t from-[#0a0a0c]/90 via-transparent to-transparent pointer-events-none"
+					></div>
+				</div>
+
+				<!-- Content Body -->
+				<div class="p-6 sm:p-10 relative z-10">
+					<div class="flex items-center gap-3 mb-4">
+						<span
+							class="text-xs font-mono tracking-wider text-accent-cyan px-2.5 py-1 bg-accent-cyan/10 rounded-md border border-accent-cyan/20"
+						>
+							{selectedProject.category}
+						</span>
+						<span
+							class="text-sm text-neutral-400 flex items-center gap-2"
+						>
+							<span class="w-1 h-1 rounded-full bg-accent-emerald"
+							></span>
+							{selectedProject.role}
+						</span>
 					</div>
 
-					<!-- Content Body -->
-					<div class="p-6 sm:p-10 relative z-10">
-						<div class="flex items-center gap-3 mb-4">
-							<span
-								class="text-xs font-mono tracking-wider text-accent-cyan px-2.5 py-1 bg-accent-cyan/10 rounded-md border border-accent-cyan/20"
+					<h3 class="text-3xl sm:text-4xl font-bold mb-8 text-white">
+						{selectedProject.title}
+					</h3>
+
+					<div class="flex flex-col gap-8">
+						<div class="flex flex-col gap-3">
+							<h4
+								class="text-xl font-semibold text-white/90 border-b border-white/10 pb-2"
 							>
-								{selectedProject.category}
-							</span>
-							<span class="text-sm text-neutral-400 flex items-center gap-2">
-								<span class="w-1 h-1 rounded-full bg-accent-emerald"></span>
-								{selectedProject.role}
-							</span>
+								Project Overview
+							</h4>
+							<p
+								class="text-neutral-300 leading-relaxed font-light"
+							>
+								{selectedProject.description}
+							</p>
 						</div>
 
-						<h3 class="text-3xl sm:text-4xl font-bold mb-8 text-white">
-							{selectedProject.title}
-						</h3>
-
-						<div class="flex flex-col gap-8">
-							<div class="flex flex-col gap-3">
-								<h4 class="text-xl font-semibold text-white/90 border-b border-white/10 pb-2">
-									Project Overview
-								</h4>
-								<p class="text-neutral-300 leading-relaxed font-light">
-									{selectedProject.description}
-								</p>
-							</div>
-
-							<div class="flex flex-col gap-3">
-								<h4 class="text-xl font-semibold text-white/90 border-b border-white/10 pb-2">
-									Design Thinking Process
-								</h4>
-								<p class="text-neutral-300 leading-relaxed font-light">
-									{selectedProject.designThinking}
-								</p>
-							</div>
+						<div class="flex flex-col gap-3">
+							<h4
+								class="text-xl font-semibold text-white/90 border-b border-white/10 pb-2"
+							>
+								Design Thinking Process
+							</h4>
+							<p
+								class="text-neutral-300 leading-relaxed font-light"
+							>
+								{selectedProject.designThinking}
+							</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	{/if}
+	</div>
+{/if}
