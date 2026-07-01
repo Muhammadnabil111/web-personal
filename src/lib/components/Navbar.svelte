@@ -10,7 +10,7 @@
 <svelte:window bind:scrollY />
 
 <nav
-	class="fixed top-6 left-1/2 -translate-x-1/2 z-50 fade-in-on-load transition-all duration-300 w-[95%] sm:w-auto max-w-3xl"
+	class="fixed top-6 left-1/2 -translate-x-1/2 z-50 fade-in-on-load transition-all duration-300 w-[calc(100%-3rem)] sm:w-auto max-w-3xl"
 >
 	<div
 		class="flex items-center justify-between sm:justify-center gap-1 sm:gap-2 px-2 sm:px-3 py-2 rounded-2xl border transition-all duration-500 shadow-xl {isScrolled
