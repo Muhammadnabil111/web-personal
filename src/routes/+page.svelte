@@ -123,7 +123,7 @@
 		</div>
 
 		<h1
-			class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-neutral-500"
+			class="text-4xl md:text-7xl font-extrabold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-neutral-500"
 		>
 			Crafting Intuitive Interfaces.<br />
 			<span
