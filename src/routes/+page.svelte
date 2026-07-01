@@ -133,7 +133,7 @@
 		</h1>
 
 		<p
-			class="text-lg md:text-xl text-neutral-400 max-w-2xl mt-4 leading-relaxed font-light"
+			class="text-lg md:text-xl text-neutral-400 max-w-2xl mt-4 leading-relaxed font-[600]"
 		>
 			Hi, I'm <strong class="text-white font-semibold"
 				>Muhammad Nabil</strong
@@ -160,7 +160,7 @@
 	<!-- Tools Marquee -->
 	<section class="flex flex-col gap-6 -mx-6 md:mx-0">
 		<p
-			class="text-center text-sm font-mono tracking-widest text-neutral-500 uppercase"
+			class="text-center text-sm font-mono tracking-widest text-neutral-500 uppercase font-[600]"
 		>
 			Core Stack & Technologies
 		</p>
@@ -171,7 +171,7 @@
 	<section class="flex flex-col gap-12" id="expertise">
 		<div class="flex flex-col gap-2">
 			<h2 class="text-3xl font-bold">Expertise & Services</h2>
-			<p class="text-neutral-400">
+			<p class="text-neutral-400 font-[600]">
 				Bridging the gap between spatial data and human-centric design.
 			</p>
 		</div>
@@ -190,7 +190,7 @@
 					<PenTool size={24} />
 				</div>
 				<h3 class="text-xl font-bold">UI/UX Design</h3>
-				<p class="text-neutral-400 text-sm leading-relaxed">
+				<p class="text-neutral-400 text-sm leading-relaxed font-[600]">
 					Crafting beautiful, accessible wireframes, high-fidelity
 					prototypes, and comprehensive design systems focusing on
 					user experience.
@@ -210,7 +210,7 @@
 					<LayoutGrid size={24} />
 				</div>
 				<h3 class="text-xl font-bold">Web Development</h3>
-				<p class="text-neutral-400 text-sm leading-relaxed">
+				<p class="text-neutral-400 text-sm leading-relaxed font-[600]">
 					Building fast, responsive, and fully optimized modern web
 					applications using tools like SvelteKit, Tailwind CSS, and
 					Vite.
@@ -230,7 +230,7 @@
 					<Globe size={24} />
 				</div>
 				<h3 class="text-xl font-bold">Geospatial Analysis</h3>
-				<p class="text-neutral-400 text-sm leading-relaxed">
+				<p class="text-neutral-400 text-sm leading-relaxed font-[600]">
 					Translating complex spatial data into actionable insights
 					using QGIS, ArcGIS, Spatial Data Visualization, and WebGIS
 					architectures.
@@ -246,7 +246,7 @@
 		>
 			<div class="flex flex-col gap-2">
 				<h2 class="text-3xl font-bold">Selected Works</h2>
-				<p class="text-neutral-400">
+				<p class="text-neutral-400 font-[600]">
 					A showcase of user interfaces and design systems.
 				</p>
 			</div>
@@ -326,7 +326,9 @@
 	>
 		<div class="flex flex-col items-center md:items-start gap-4">
 			<h2 class="text-2xl font-bold">Let's work together.</h2>
-			<p class="text-neutral-400 text-center md:text-left max-w-sm">
+			<p
+				class="text-neutral-400 text-center md:text-left max-w-sm font-[600]"
+			>
 				Open for new opportunities and collaborations. Feel free to
 				reach out.
 			</p>
@@ -478,7 +480,7 @@
 								Project Overview
 							</h4>
 							<p
-								class="text-neutral-300 leading-relaxed font-light"
+								class="text-neutral-300 leading-relaxed font-[390]"
 							>
 								{selectedProject.description}
 							</p>
@@ -491,7 +493,7 @@
 								Design Thinking Process
 							</h4>
 							<p
-								class="text-neutral-300 leading-relaxed font-light"
+								class="text-neutral-300 leading-relaxed font-[390]"
 							>
 								{selectedProject.designThinking}
 							</p>
