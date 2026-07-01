@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { base } from "$app/paths";
-	import AuraBackground from "$lib/components/AuraBackground.svelte";
+	import StarBackground from "$lib/components/StarBackground.svelte";
 	import Marquee from "$lib/components/Marquee.svelte";
 	import Navbar from "$lib/components/Navbar.svelte";
 	import {
@@ -102,7 +102,7 @@
 	);
 </script>
 
-<AuraBackground />
+<StarBackground />
 <Navbar />
 
 <div
