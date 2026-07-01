@@ -106,7 +106,7 @@
 <Navbar />
 
 <div
-	class="relative z-10 w-full max-w-6xl mx-auto px-6 pt-20 sm:pt-32 pb-24 flex flex-col gap-32"
+	class="relative z-10 w-full max-w-6xl mx-auto px-6 pt-8 sm:pt-32 pb-32 sm:pb-24 flex flex-col gap-32"
 >
 	<!-- Hero Section -->
 	<header
