@@ -123,7 +123,7 @@
 		</div>
 
 		<h1
-			class="text-4xl md:text-7xl font-extrabold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-neutral-500"
+			class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-neutral-500"
 		>
 			Crafting Intuitive Interfaces.<br />
 			<span
@@ -133,7 +133,7 @@
 		</h1>
 
 		<p
-			class="text-lg md:text-xl text-neutral-400 max-w-2xl mt-4 leading-relaxed font-[600]"
+			class="text-lg md:text-xl text-neutral-400 max-w-2xl mt-4 leading-relaxed font-[500]"
 		>
 			Hi, I'm <strong class="text-white font-semibold"
 				>Muhammad Nabil</strong
@@ -160,7 +160,7 @@
 	<!-- Tools Marquee -->
 	<section class="flex flex-col gap-6 -mx-6 md:mx-0">
 		<p
-			class="text-center text-sm font-mono tracking-widest text-neutral-500 uppercase font-[600]"
+			class="text-center text-sm font-mono tracking-widest text-neutral-500 uppercase font-[900]"
 		>
 			Core Stack & Technologies
 		</p>
