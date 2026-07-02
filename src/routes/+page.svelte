@@ -105,321 +105,338 @@
 	let contentVisible = $state(false);
 </script>
 
-<StarBackground onWarpEnd={() => contentVisible = true} />
+<StarBackground onWarpEnd={() => (contentVisible = true)} />
 
 {#if contentVisible}
-<div in:fade={{ duration: 1500, delay: 200 }}>
-	<Navbar />
+	<div in:fade={{ duration: 1500, delay: 200 }}>
+		<Navbar />
 
-	<div
-		class="relative z-10 w-full max-w-6xl mx-auto px-6 pt-8 sm:pt-32 pb-32 sm:pb-24 flex flex-col gap-32"
-	>
-	<!-- Hero Section -->
-	<header
-		class="flex flex-col items-center text-center gap-6 fade-in-on-load pt-4 sm:pt-8"
-	>
 		<div
-			class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-4"
+			class="relative z-10 w-full max-w-6xl mx-auto px-6 pt-8 sm:pt-32 pb-32 sm:pb-24 flex flex-col gap-32"
 		>
-			<span class="w-2 h-2 rounded-full bg-accent-emerald animate-pulse"
-			></span>
-			<span class="text-sm font-medium tracking-wide text-neutral-300"
-				>Available for freelance opportunities</span
-			>
-		</div>
-
-		<h1
-			class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-neutral-500"
-		>
-			Crafting Intuitive Interfaces.<br />
-			<span
-				class="text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan to-accent-emerald"
-				>Mapping Complex Realities.</span
-			>
-		</h1>
-
-		<p
-			class="text-lg md:text-xl text-neutral-400 max-w-2xl mt-4 leading-relaxed font-[500]"
-		>
-			Hi, I'm <strong class="text-white font-semibold"
-				>Muhammad Nabil</strong
-			>. A hybrid UI/Web Designer & Geospatial Analyst building
-			high-performance, data-driven digital experiences.
-		</p>
-
-		<div class="flex flex-wrap items-center justify-center gap-4 mt-8">
-			<a
-				href="#projects"
-				class="px-8 py-4 rounded-full bg-white text-bg-dark font-semibold transition-transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
-			>
-				View Projects
-			</a>
-			<a
-				href="#contact"
-				class="px-8 py-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-md font-semibold text-white transition-colors hover:bg-white/10 hover:border-white/30"
-			>
-				Contact Me
-			</a>
-		</div>
-	</header>
-
-	<!-- Tools Marquee -->
-	<section class="flex flex-col gap-6 -mx-6 md:mx-0">
-		<p
-			class="text-center text-sm font-mono tracking-widest text-neutral-500 uppercase font-[900]"
-		>
-			Core Stack & Technologies
-		</p>
-		<Marquee items={tools} />
-	</section>
-
-	<!-- Expertise / Services (Bento Grid) -->
-	<section class="flex flex-col gap-12" id="expertise">
-		<div class="flex flex-col gap-2">
-			<h2 class="text-3xl font-bold">Expertise & Services</h2>
-			<p class="text-neutral-400 font-[600]">
-				Bridging the gap between spatial data and human-centric design.
-			</p>
-		</div>
-
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-			<!-- Card 1 -->
-			<div
-				class="glow-card group relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden flex flex-col gap-4"
+			<!-- Hero Section -->
+			<header
+				class="flex flex-col items-center text-center gap-6 fade-in-on-load pt-4 sm:pt-8"
 			>
 				<div
-					class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-cyan to-transparent opacity-50 group-hover:opacity-100 transition-opacity"
-				></div>
-				<div
-					class="w-12 h-12 rounded-xl bg-accent-cyan/10 flex items-center justify-center text-accent-cyan mb-2"
+					class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-4"
 				>
-					<PenTool size={24} />
-				</div>
-				<h3 class="text-xl font-bold">UI/UX Design</h3>
-				<p class="text-neutral-400 text-sm leading-relaxed font-[600]">
-					Crafting beautiful, accessible wireframes, high-fidelity
-					prototypes, and comprehensive design systems focusing on
-					user experience.
-				</p>
-			</div>
-
-			<!-- Card 2 -->
-			<div
-				class="glow-card group relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden flex flex-col gap-4"
-			>
-				<div
-					class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-emerald to-transparent opacity-50 group-hover:opacity-100 transition-opacity"
-				></div>
-				<div
-					class="w-12 h-12 rounded-xl bg-accent-emerald/10 flex items-center justify-center text-accent-emerald mb-2"
-				>
-					<LayoutGrid size={24} />
-				</div>
-				<h3 class="text-xl font-bold">Web Development</h3>
-				<p class="text-neutral-400 text-sm leading-relaxed font-[600]">
-					Building fast, responsive, and fully optimized modern web
-					applications using tools like SvelteKit, Tailwind CSS, and
-					Vite.
-				</p>
-			</div>
-
-			<!-- Card 3 -->
-			<div
-				class="glow-card group relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden flex flex-col gap-4"
-			>
-				<div
-					class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"
-				></div>
-				<div
-					class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 mb-2"
-				>
-					<Globe size={24} />
-				</div>
-				<h3 class="text-xl font-bold">Geospatial Analysis</h3>
-				<p class="text-neutral-400 text-sm leading-relaxed font-[600]">
-					Translating complex spatial data into actionable insights
-					using QGIS, ArcGIS, Spatial Data Visualization, and WebGIS
-					architectures.
-				</p>
-			</div>
-		</div>
-	</section>
-
-	<!-- Projects Showcase -->
-	<section class="flex flex-col gap-12" id="projects">
-		<div
-			class="flex flex-col md:flex-row md:items-end justify-between gap-6"
-		>
-			<div class="flex flex-col gap-2">
-				<h2 class="text-3xl font-bold">Selected Works</h2>
-				<p class="text-neutral-400 font-[600]">
-					A showcase of user interfaces and design systems.
-				</p>
-			</div>
-
-			<!-- Filter Pills -->
-			<div
-				class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 hide-scrollbar"
-			>
-				{#each categories as category}
-					<button
-						onclick={() => (filterCategory = category)}
-						class="px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 border
-							{filterCategory === category
-							? 'bg-white text-bg-dark border-transparent shadow-[0_0_15px_rgba(255,255,255,0.15)]'
-							: 'bg-white/5 text-neutral-400 border-white/10 hover:bg-white/10 hover:text-white'}"
+					<span
+						class="w-2 h-2 rounded-full bg-accent-emerald animate-pulse"
+					></span>
+					<span
+						class="text-sm font-medium tracking-wide text-neutral-300"
+						>Available for freelance opportunities</span
 					>
-						{category}
-					</button>
-				{/each}
-			</div>
-		</div>
+				</div>
 
-		<!-- Masonry/Grid -->
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-			{#each filteredProjects as project (project.title)}
-				<button
-					class="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-[4/3] cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-accent-cyan w-full h-full"
-					onclick={() => (selectedProject = project)}
+				<h1
+					class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-neutral-500"
 				>
-					<!-- Image -->
-					<img
-						src="{base}{project.img}"
-						alt={project.title}
-						class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-					/>
+					Crafting Intuitive Interfaces.<br />
+					<span
+						class="text-transparent bg-clip-text bg-gradient-to-r from-accent-cyan to-accent-emerald"
+						>Mapping Complex Realities.</span
+					>
+				</h1>
 
-					<!-- Overlay -->
+				<p
+					class="text-lg md:text-xl text-neutral-400 max-w-2xl mt-4 leading-relaxed font-[500]"
+				>
+					Hi, I'm <strong class="text-white font-semibold"
+						>Muhammad Nabil</strong
+					>. A hybrid UI/Web Designer & Geospatial Analyst building
+					high-performance, data-driven digital experiences.
+				</p>
+
+				<div
+					class="flex flex-wrap items-center justify-center gap-4 mt-8"
+				>
+					<a
+						href="#projects"
+						class="px-8 py-4 rounded-full bg-white text-bg-dark font-semibold transition-transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+					>
+						View Projects
+					</a>
+					<a
+						href="#contact"
+						class="px-8 py-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-md font-semibold text-white transition-colors hover:bg-white/10 hover:border-white/30"
+					>
+						Contact Me
+					</a>
+				</div>
+			</header>
+
+			<!-- Tools Marquee -->
+			<section class="flex flex-col gap-6 -mx-6 md:mx-0">
+				<p
+					class="text-center text-sm font-mono tracking-widest text-neutral-500 uppercase font-[900]"
+				>
+					Core Stack & Technologies
+				</p>
+				<Marquee items={tools} />
+			</section>
+
+			<!-- Expertise / Services (Bento Grid) -->
+			<section class="flex flex-col gap-12" id="expertise">
+				<div class="flex flex-col gap-2">
+					<h2 class="text-3xl font-bold">Expertise & Services</h2>
+					<p class="text-neutral-400 font-[600]">
+						Bridging the gap between spatial data and human-centric
+						design.
+					</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+					<!-- Card 1 -->
 					<div
-						class="absolute inset-0 bg-gradient-to-t from-[#030305]/90 via-[#030305]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6"
+						class="glow-card group relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden flex flex-col gap-4"
 					>
 						<div
-							class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+							class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-cyan to-transparent opacity-50 group-hover:opacity-100 transition-opacity"
+						></div>
+						<div
+							class="w-12 h-12 rounded-xl bg-accent-cyan/10 flex items-center justify-center text-accent-cyan mb-2"
 						>
-							<div class="flex items-center justify-between mb-2">
-								<span
-									class="text-xs font-mono tracking-wider text-accent-cyan px-2 py-1 bg-accent-cyan/10 rounded-md border border-accent-cyan/20"
-								>
-									{project.category}
-								</span>
-								<ArrowUpRight
-									size={20}
-									class="text-white opacity-50 group-hover:opacity-100 transition-opacity"
-								/>
-							</div>
-							<h4 class="text-xl font-bold text-white mb-1">
-								{project.title}
-							</h4>
-							<p
-								class="text-neutral-400 text-sm flex items-center gap-2"
-							>
-								<span
-									class="w-1 h-1 rounded-full bg-accent-emerald"
-								></span>
-								{project.role}
-							</p>
+							<PenTool size={24} />
 						</div>
+						<h3 class="text-xl font-bold">UI/UX Design</h3>
+						<p
+							class="text-neutral-400 text-sm leading-relaxed font-[600]"
+						>
+							Crafting beautiful, accessible wireframes,
+							high-fidelity prototypes, and comprehensive design
+							systems focusing on user experience.
+						</p>
 					</div>
-				</button>
-			{/each}
-		</div>
-	</section>
 
-	<!-- Footer / Contact -->
-	<footer
-		class="mt-12 mb-8 pt-12 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-8"
-		id="contact"
-	>
-		<div class="flex flex-col items-center md:items-start gap-4">
-			<h2 class="text-2xl font-bold">Let's work together.</h2>
-			<p
-				class="text-neutral-400 text-center md:text-left max-w-sm font-[600]"
-			>
-				Open for new opportunities and collaborations. Feel free to
-				reach out.
-			</p>
-			<a
-				href="mailto:ngastag@gmail.com"
-				class="inline-flex items-center gap-2 mt-2 px-6 py-3 rounded-xl bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20 font-medium hover:bg-accent-cyan hover:text-bg-dark transition-colors duration-300"
-			>
-				<Mail size={18} />
-				ngastag@gmail.com
-			</a>
-		</div>
+					<!-- Card 2 -->
+					<div
+						class="glow-card group relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden flex flex-col gap-4"
+					>
+						<div
+							class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-emerald to-transparent opacity-50 group-hover:opacity-100 transition-opacity"
+						></div>
+						<div
+							class="w-12 h-12 rounded-xl bg-accent-emerald/10 flex items-center justify-center text-accent-emerald mb-2"
+						>
+							<LayoutGrid size={24} />
+						</div>
+						<h3 class="text-xl font-bold">Web Development</h3>
+						<p
+							class="text-neutral-400 text-sm leading-relaxed font-[600]"
+						>
+							Building fast, responsive, and fully optimized
+							modern web applications using tools like SvelteKit,
+							Tailwind CSS, and Vite.
+						</p>
+					</div>
 
-		<div class="flex gap-4">
-			<a
-				href="https://linkedin.com"
-				target="_blank"
-				class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="20"
-					height="20"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					><path
-						d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-					/><rect width="4" height="12" x="2" y="9" /><circle
-						cx="4"
-						cy="4"
-						r="2"
-					/></svg
+					<!-- Card 3 -->
+					<div
+						class="glow-card group relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden flex flex-col gap-4"
+					>
+						<div
+							class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"
+						></div>
+						<div
+							class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 mb-2"
+						>
+							<Globe size={24} />
+						</div>
+						<h3 class="text-xl font-bold">Geospatial Analysis</h3>
+						<p
+							class="text-neutral-400 text-sm leading-relaxed font-[600]"
+						>
+							Translating complex spatial data into actionable
+							insights using QGIS, ArcGIS, Spatial Data
+							Visualization, and WebGIS architectures.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Projects Showcase -->
+			<section class="flex flex-col gap-12" id="projects">
+				<div
+					class="flex flex-col md:flex-row md:items-end justify-between gap-6"
 				>
-			</a>
-			<a
-				href="https://github.com"
-				target="_blank"
-				class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="20"
-					height="20"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					><path
-						d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
-					/><path d="M9 18c-4.51 2-5-2-7-2" /></svg
+					<div class="flex flex-col gap-2">
+						<h2 class="text-3xl font-bold">Selected Works</h2>
+						<p class="text-neutral-400 font-[600]">
+							A showcase of user interfaces and design systems.
+						</p>
+					</div>
+
+					<!-- Filter Pills -->
+					<div
+						class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 hide-scrollbar"
+					>
+						{#each categories as category}
+							<button
+								onclick={() => (filterCategory = category)}
+								class="px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 border
+							{filterCategory === category
+									? 'bg-white text-bg-dark border-transparent shadow-[0_0_15px_rgba(255,255,255,0.15)]'
+									: 'bg-white/5 text-neutral-400 border-white/10 hover:bg-white/10 hover:text-white'}"
+							>
+								{category}
+							</button>
+						{/each}
+					</div>
+				</div>
+
+				<!-- Masonry/Grid -->
+				<div
+					class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
 				>
-			</a>
-			<a
-				href="https://dribbble.com"
-				target="_blank"
-				class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
+					{#each filteredProjects as project (project.title)}
+						<button
+							class="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-[4/3] cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-accent-cyan w-full h-full"
+							onclick={() => (selectedProject = project)}
+						>
+							<!-- Image -->
+							<img
+								src="{base}{project.img}"
+								alt={project.title}
+								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+							/>
+
+							<!-- Overlay -->
+							<div
+								class="absolute inset-0 bg-gradient-to-t from-[#030305]/90 via-[#030305]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6"
+							>
+								<div
+									class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+								>
+									<div
+										class="flex items-center justify-between mb-2"
+									>
+										<span
+											class="text-xs font-mono tracking-wider text-accent-cyan px-2 py-1 bg-accent-cyan/10 rounded-md border border-accent-cyan/20"
+										>
+											{project.category}
+										</span>
+										<ArrowUpRight
+											size={20}
+											class="text-white opacity-50 group-hover:opacity-100 transition-opacity"
+										/>
+									</div>
+									<h4
+										class="text-xl font-bold text-white mb-1"
+									>
+										{project.title}
+									</h4>
+									<p
+										class="text-neutral-400 text-sm flex items-center gap-2"
+									>
+										<span
+											class="w-1 h-1 rounded-full bg-accent-emerald"
+										></span>
+										{project.role}
+									</p>
+								</div>
+							</div>
+						</button>
+					{/each}
+				</div>
+			</section>
+
+			<!-- Footer / Contact -->
+			<footer
+				class="mt-12 mb-8 pt-12 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-8"
+				id="contact"
 			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="20"
-					height="20"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					><circle cx="12" cy="12" r="10" /><path
-						d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"
-					/><path
-						d="M21.75 12.84c-6.6.28-11.85-2.48-14.88-6.19"
-					/><path d="M16 22c-1.39-4.53-4-8.8-8-11.45" /><path
-						d="M8.25 15.68c3.21 2.2 5.58 5.63 6.35 9.13"
-					/></svg
-				>
-			</a>
+				<div class="flex flex-col items-center md:items-start gap-4">
+					<h2 class="text-2xl font-bold">Let's work together.</h2>
+					<p
+						class="text-neutral-400 text-center md:text-left max-w-sm font-[600]"
+					>
+						Open for new opportunities and collaborations. Feel free
+						to reach out.
+					</p>
+					<a
+						href="mailto:ngastag@gmail.com"
+						class="inline-flex items-center gap-2 mt-2 px-6 py-3 rounded-xl bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20 font-medium hover:bg-accent-cyan hover:text-bg-dark transition-colors duration-300"
+					>
+						<Mail size={18} />
+						ngastag@gmail.com
+					</a>
+				</div>
+
+				<div class="flex gap-4">
+					<a
+						href="https://www.linkedin.com/in/muhammad-nabiel/"
+						target="_blank"
+						class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><path
+								d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+							/><rect width="4" height="12" x="2" y="9" /><circle
+								cx="4"
+								cy="4"
+								r="2"
+							/></svg
+						>
+					</a>
+					<a
+						href="https://github.com/Muhammadnabil111"
+						target="_blank"
+						class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><path
+								d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+							/><path d="M9 18c-4.51 2-5-2-7-2" /></svg
+						>
+					</a>
+					<a
+						href="https://dribbble.com/elinestudio"
+						target="_blank"
+						class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><circle cx="12" cy="12" r="10" /><path
+								d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"
+							/><path
+								d="M21.75 12.84c-6.6.28-11.85-2.48-14.88-6.19"
+							/><path d="M16 22c-1.39-4.53-4-8.8-8-11.45" /><path
+								d="M8.25 15.68c3.21 2.2 5.58 5.63 6.35 9.13"
+							/></svg
+						>
+					</a>
+				</div>
+			</footer>
 		</div>
-	</footer>
-</div>
-</div>
+	</div>
 {/if}
 
 <!-- Project Modal View -->
