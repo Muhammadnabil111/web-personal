@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 
+	let { onWarpEnd = () => {} } = $props();
+
 	let universe: HTMLDivElement;
 
 	onMount(() => {
@@ -9,6 +11,8 @@
 
 		const width = window.innerWidth;
 		const height = window.innerHeight;
+
+		const animations: Animation[] = [];
 
 		for (let i = 0; i < starCount; ++i) {
 			const ypos = Math.round(Math.random() * height);
@@ -21,7 +25,7 @@
 			star.style.backgroundColor = "white";
 
 			universe.appendChild(star);
-			star.animate(
+			const anim = star.animate(
 				[
 					{
 						transform:
@@ -42,7 +46,41 @@
 					iterations: Infinity,
 				},
 			);
+			anim.playbackRate = 15;
+			animations.push(anim);
 		}
+
+		universe.classList.add("warping");
+
+		setTimeout(() => {
+			if (universe) universe.classList.remove("warping");
+
+			let start = performance.now();
+			const duration = 2500;
+			const initialRate = 15;
+			const targetRate = 1;
+
+			function step(time: number) {
+				let progress = (time - start) / duration;
+				if (progress > 1) progress = 1;
+
+				const easeOut = 1 - Math.pow(1 - progress, 3);
+				const currentRate =
+					initialRate - (initialRate - targetRate) * easeOut;
+
+				animations.forEach((anim) => {
+					anim.playbackRate = currentRate;
+				});
+
+				if (progress < 1) {
+					requestAnimationFrame(step);
+				} else {
+					onWarpEnd();
+				}
+			}
+
+			requestAnimationFrame(step);
+		}, 1500);
 
 		return () => {
 			if (universe) {
@@ -66,9 +104,30 @@
 </div>
 
 <style>
+	:global(.warping .star0),
+	:global(.warping .star1),
+	:global(.warping .star2),
+	:global(.warping .star3) {
+		width: 150px !important;
+		border-radius: 0 !important;
+		background-color: rgba(255, 255, 255, 0.9) !important;
+		box-shadow: 0 0 15px rgba(0, 245, 255, 0.9) !important;
+	}
+
+	:global(.star0),
+	:global(.star1),
+	:global(.star2),
+	:global(.star3) {
+		transition:
+			width 1.5s ease-out,
+			background-color 1.5s ease-out,
+			box-shadow 1.5s ease-out,
+			border-radius 1.5s ease-out;
+	}
+
 	:global(.star0) {
 		height: 1px;
-		width: 1px;
+		width: 5px;
 		opacity: 1;
 		position: absolute;
 	}

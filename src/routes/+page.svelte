@@ -3,6 +3,7 @@
 	import StarBackground from "$lib/components/StarBackground.svelte";
 	import Marquee from "$lib/components/Marquee.svelte";
 	import Navbar from "$lib/components/Navbar.svelte";
+	import { fade } from "svelte/transition";
 	import {
 		ArrowUpRight,
 		Mail,
@@ -100,14 +101,19 @@
 			? projects
 			: projects.filter((p) => p.category === filterCategory),
 	);
+
+	let contentVisible = $state(false);
 </script>
 
-<StarBackground />
-<Navbar />
+<StarBackground onWarpEnd={() => contentVisible = true} />
 
-<div
-	class="relative z-10 w-full max-w-6xl mx-auto px-6 pt-8 sm:pt-32 pb-32 sm:pb-24 flex flex-col gap-32"
->
+{#if contentVisible}
+<div in:fade={{ duration: 1500, delay: 200 }}>
+	<Navbar />
+
+	<div
+		class="relative z-10 w-full max-w-6xl mx-auto px-6 pt-8 sm:pt-32 pb-32 sm:pb-24 flex flex-col gap-32"
+	>
 	<!-- Hero Section -->
 	<header
 		class="flex flex-col items-center text-center gap-6 fade-in-on-load pt-4 sm:pt-8"
@@ -413,6 +419,8 @@
 		</div>
 	</footer>
 </div>
+</div>
+{/if}
 
 <!-- Project Modal View -->
 {#if selectedProject}
