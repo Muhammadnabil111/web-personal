@@ -55,31 +55,16 @@
 		setTimeout(() => {
 			if (universe) universe.classList.remove("warping");
 
-			let start = performance.now();
-			const duration = 2500;
-			const initialRate = 15;
-			const targetRate = 1;
+			// Set playback rate to normal instantly to avoid lag.
+			// The CSS transition on width and box-shadow will create a smooth visual deceleration effect.
+			animations.forEach((anim) => {
+				anim.playbackRate = 1;
+			});
 
-			function step(time: number) {
-				let progress = (time - start) / duration;
-				if (progress > 1) progress = 1;
-
-				const easeOut = 1 - Math.pow(1 - progress, 3);
-				const currentRate =
-					initialRate - (initialRate - targetRate) * easeOut;
-
-				animations.forEach((anim) => {
-					anim.playbackRate = currentRate;
-				});
-
-				if (progress < 1) {
-					requestAnimationFrame(step);
-				} else {
-					onWarpEnd();
-				}
-			}
-
-			requestAnimationFrame(step);
+			// Wait for the CSS deceleration transition to finish before showing content
+			setTimeout(() => {
+				onWarpEnd();
+			}, 1500); // matches the 1.5s CSS transition duration
 		}, 1500);
 
 		return () => {
