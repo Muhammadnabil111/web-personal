@@ -76,10 +76,16 @@
 </script>
 
 <div class="fixed inset-0 pointer-events-none z-0 bg-bg-dark overflow-hidden">
-	<!-- Cahaya linear warna Pandora di sisi kanan full atas ke bawah -->
+	<!-- Desktop Gradient (starts at 40%) -->
 	<div
-		class="absolute inset-0 opacity-50 mix-blend-screen"
+		class="hidden sm:block absolute inset-0 opacity-50 mix-blend-screen"
 		style="background: linear-gradient(to right, transparent 40%, #001155 75%, #0077ff 92%, #00f5ff 100%);"
+	></div>
+	
+	<!-- Mobile Gradient (starts at 70%, taking 50% less width than desktop) -->
+	<div
+		class="block sm:hidden absolute inset-0 opacity-50 mix-blend-screen"
+		style="background: linear-gradient(to right, transparent 70%, #001155 87%, #0077ff 96%, #00f5ff 100%);"
 	></div>
 
 	<div bind:this={universe} class="absolute inset-0 overflow-hidden"></div>

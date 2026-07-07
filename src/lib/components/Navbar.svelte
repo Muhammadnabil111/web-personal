@@ -29,9 +29,7 @@
 			>
 		</a>
 
-		<div
-			class="w-px h-5 bg-white/10 mx-1 hidden sm:block"
-		></div>
+		<div class="w-px h-5 bg-white/10 mx-1 hidden sm:block"></div>
 
 		<a
 			href="#expertise"
@@ -46,9 +44,7 @@
 			>
 		</a>
 
-		<div
-			class="w-px h-5 bg-white/10 mx-1 hidden sm:block"
-		></div>
+		<div class="w-px h-5 bg-white/10 mx-1 hidden sm:block"></div>
 
 		<a
 			href="#projects"
@@ -63,9 +59,7 @@
 			>
 		</a>
 
-		<div
-			class="w-px h-5 bg-white/10 mx-1 hidden sm:block"
-		></div>
+		<div class="w-px h-5 bg-white/10 mx-1 hidden sm:block"></div>
 
 		<a
 			href="#contact"

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { base } from "$app/paths";
 	import StarBackground from "$lib/components/StarBackground.svelte";
-	import Marquee from "$lib/components/Marquee.svelte";
+
 	import Navbar from "$lib/components/Navbar.svelte";
 	import { fade } from "svelte/transition";
 	import {
@@ -16,16 +16,90 @@
 	} from "lucide-svelte";
 
 	let tools = [
-		{ name: "Figma", icon: "fa-brands fa-figma" },
-		{ name: "SvelteKit", icon: "fa-brands fa-js" }, // FA doesn't have svelte, using js or general
-		{ name: "TailwindCSS", icon: "fa-solid fa-wind" },
-		{ name: "QGIS", icon: "fa-solid fa-earth-americas" },
-		{ name: "ArcGIS", icon: "fa-solid fa-map-location-dot" },
-		{ name: "Python", icon: "fa-brands fa-python" },
-		{ name: "PostGIS", icon: "fa-solid fa-database" },
-		{ name: "Leaflet", icon: "fa-solid fa-leaf" },
-		{ name: "Mapbox", icon: "fa-solid fa-box" },
-		{ name: "PostgreSQL", icon: "fa-solid fa-server" },
+		{
+			name: "Figma",
+			icon: "fa-brands fa-figma",
+			color: "#a259ff",
+			subtitle: "UI/UX Design Tool",
+		},
+		{
+			name: "JavaScript",
+			icon: "fa-brands fa-js",
+			color: "#F7DF1E",
+			subtitle: "Programming Language",
+		},
+		{
+			name: "SvelteKit",
+			icon: "fa-brands fa-svelte",
+			color: "#FF3E00",
+			subtitle: "Web Framework",
+		},
+		{
+			name: "TailwindCSS",
+			icon: "fa-brands fa-tailwind-css",
+			color: "#06B6D4",
+			subtitle: "Utility-first CSS",
+		},
+		{
+			name: "Git",
+			icon: "fa-brands fa-git-alt",
+			color: "#F05032", // Diperbaiki ke oranye/merah resmi Git
+			subtitle: "Version Control System", // Diperbaiki dari "Desktop GIS Software"
+		},
+		{
+			name: "ArcGIS",
+			icon: "fa-solid fa-map-location-dot",
+			color: "#0079C1",
+			subtitle: "Enterprise GIS Platform",
+		},
+		{
+			name: "PostgreSQL",
+			icon: "fa-brands fa-postgresql fa-xl",
+			color: "#336791",
+			subtitle: "Relational Database",
+		},
+		{
+			name: "PHP",
+			icon: "fa-brands fa-php",
+			color: "#777BB4", // Diperbaiki ke ungu/biru resmi PHP
+			subtitle: "Server-side Scripting",
+		},
+		{
+			name: "OpenAI",
+			icon: "fa-brands fa-openai",
+			color: "#FFFFFF", // Diperbaiki dari typo "#fffffff" (cocok untuk dark mode)
+			subtitle: "AI Assistant",
+		},
+		{
+			name: "Claude",
+			icon: "fa-brands fa-claude",
+			color: "#D97757",
+			subtitle: "AI Assistant",
+		},
+		{
+			name: "Visual Studio Code",
+			icon: "fa-solid fa-code",
+			color: "#007ACC",
+			subtitle: "Code Editor",
+		},
+		{
+			name: "GitHub",
+			icon: "fa-brands fa-github",
+			color: "#FFFFFF", // Putih standar untuk dark mode UI
+			subtitle: "Code Repository",
+		},
+		{
+			name: "Node.js", // Diperjelas menjadi Node.js
+			icon: "fa-brands fa-node",
+			color: "#339933", // Diperbaiki ke hijau resmi Node.js
+			subtitle: "JavaScript Runtime", // Diperbaiki dari "Code Editor"
+		},
+		{
+			name: "HTML5",
+			icon: "fa-brands fa-html5",
+			color: "#E34F26", // Diperbaiki ke oranye resmi HTML5
+			subtitle: "Markup Language", // Diperbaiki dari "Code Repository"
+		},
 	];
 
 	let filterCategory = $state("All");
@@ -103,6 +177,29 @@
 	);
 
 	let contentVisible = $state(false);
+
+	// Action untuk animasi fade up saat scroll
+	function fadeUp(node: HTMLElement) {
+		node.classList.add('opacity-0', 'translate-y-12', 'transition-all', 'duration-[1000ms]', 'ease-out');
+		
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					node.classList.remove('opacity-0', 'translate-y-12');
+					node.classList.add('opacity-100', 'translate-y-0');
+					observer.unobserve(node);
+				}
+			});
+		}, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+		
+		observer.observe(node);
+		
+		return {
+			destroy() {
+				observer.disconnect();
+			}
+		};
+	}
 </script>
 
 <StarBackground onWarpEnd={() => (contentVisible = true)} />
@@ -116,6 +213,7 @@
 		>
 			<!-- Hero Section -->
 			<header
+				use:fadeUp
 				class="flex flex-col items-center text-center gap-6 fade-in-on-load pt-4 sm:pt-8"
 			>
 				<div
@@ -167,42 +265,84 @@
 				</div>
 			</header>
 
-			<!-- Tools Marquee -->
-			<section class="flex flex-col gap-6 -mx-6 md:mx-0">
-				<p
-					class="text-center text-sm font-mono tracking-widest text-neutral-500 uppercase font-[900]"
+			<!-- Core Stack & Technologies -->
+			<section
+				use:fadeUp
+				class="flex flex-col gap-8 md:gap-12 pt-10"
+				id="tech-stack"
+			>
+				<div class="flex flex-col gap-4">
+					<h2
+						class="text-3xl md:text-[64px] font-semibold tracking-tight leading-none text-white"
+					>
+						Core Stack & Technologies
+					</h2>
+				</div>
+				<ul
+					class="grid grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
 				>
-					Core Stack & Technologies
-				</p>
-				<Marquee items={tools} />
+					{#each tools as tool}
+						<li
+							class="flex items-center justify-center sm:justify-start sm:gap-4 aspect-square sm:aspect-auto p-0 sm:p-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:border-white/20 group"
+							title={tool.name}
+						>
+							<div
+								class="w-full h-full sm:w-12 sm:h-12 shrink-0 sm:rounded-xl sm:bg-white/5 flex items-center justify-center sm:border sm:border-white/10 sm:group-hover:border-white/20 transition-all"
+							>
+								<i
+									class="{tool.icon} text-[2.5rem] sm:text-2xl group-hover:scale-110 transition-transform duration-300"
+									style="color: {tool.color || '#ffffff'}"
+								></i>
+							</div>
+							<div class="hidden sm:flex flex-col">
+								<span
+									class="text-base font-bold text-white/90 group-hover:text-white transition-colors"
+									>{tool.name}</span
+								>
+								<span
+									class="text-xs text-neutral-400 font-medium group-hover:text-neutral-300 transition-colors"
+									>{tool.subtitle}</span
+								>
+							</div>
+						</li>
+					{/each}
+				</ul>
 			</section>
 
 			<!-- Expertise / Services (Bento Grid) -->
-			<section class="flex flex-col gap-12" id="expertise">
-				<div class="flex flex-col gap-2">
-					<h2 class="text-3xl font-bold">Expertise & Services</h2>
-					<p class="text-neutral-400 font-[600]">
+			<section use:fadeUp class="flex flex-col gap-12" id="expertise">
+				<div class="flex flex-col gap-4">
+					<h2
+						class="text-3xl md:text-[64px] font-semibold tracking-tight leading-none text-white"
+					>
+						Expertise & Services
+					</h2>
+					<p class="text-neutral-400 font-[600] text-lg">
 						Bridging the gap between spatial data and human-centric
 						design.
 					</p>
 				</div>
 
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
 					<!-- Card 1 -->
 					<div
-						class="glow-card group relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden flex flex-col gap-4"
+						class="group relative p-8 rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-2xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1)] overflow-hidden flex flex-col gap-4 transition-all duration-500 hover:border-white/20 hover:from-white/[0.09] hover:to-white/[0.04] hover:-translate-y-2 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.9),0_0_40px_-10px_rgba(6,182,212,0.2),inset_0_1px_1px_rgba(255,255,255,0.15)]"
 					>
+						<!-- Nebula Glow -->
+						<div class="absolute -top-24 -right-24 w-64 h-64 bg-accent-cyan/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
 						<div
-							class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-cyan to-transparent opacity-50 group-hover:opacity-100 transition-opacity"
+							class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent-cyan via-accent-cyan/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
 						></div>
+						
 						<div
-							class="w-12 h-12 rounded-xl bg-accent-cyan/10 flex items-center justify-center text-accent-cyan mb-2"
+							class="relative z-10 w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-accent-cyan mb-2 group-hover:scale-110 group-hover:bg-accent-cyan/10 group-hover:border-accent-cyan/30 transition-all duration-500 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
 						>
-							<PenTool size={24} />
+							<PenTool size={26} strokeWidth={1.5} />
 						</div>
-						<h3 class="text-xl font-bold">UI/UX Design</h3>
+						<h3 class="relative z-10 text-2xl font-bold text-white/80 group-hover:text-white transition-colors duration-300">UI/UX Design</h3>
 						<p
-							class="text-neutral-400 text-sm leading-relaxed font-[600]"
+							class="relative z-10 text-neutral-400 text-sm leading-relaxed font-[500] group-hover:text-neutral-300 transition-colors duration-300"
 						>
 							Crafting beautiful, accessible wireframes,
 							high-fidelity prototypes, and comprehensive design
@@ -212,19 +352,23 @@
 
 					<!-- Card 2 -->
 					<div
-						class="glow-card group relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden flex flex-col gap-4"
+						class="group relative p-8 rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-2xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1)] overflow-hidden flex flex-col gap-4 transition-all duration-500 hover:border-white/20 hover:from-white/[0.09] hover:to-white/[0.04] hover:-translate-y-2 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.9),0_0_40px_-10px_rgba(16,185,129,0.2),inset_0_1px_1px_rgba(255,255,255,0.15)]"
 					>
+						<!-- Nebula Glow -->
+						<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-accent-emerald/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
 						<div
-							class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-emerald to-transparent opacity-50 group-hover:opacity-100 transition-opacity"
+							class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent-emerald via-accent-emerald/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
 						></div>
+						
 						<div
-							class="w-12 h-12 rounded-xl bg-accent-emerald/10 flex items-center justify-center text-accent-emerald mb-2"
+							class="relative z-10 w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-accent-emerald mb-2 group-hover:scale-110 group-hover:bg-accent-emerald/10 group-hover:border-accent-emerald/30 transition-all duration-500 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
 						>
-							<LayoutGrid size={24} />
+							<LayoutGrid size={26} strokeWidth={1.5} />
 						</div>
-						<h3 class="text-xl font-bold">Web Development</h3>
+						<h3 class="relative z-10 text-2xl font-bold text-white/80 group-hover:text-white transition-colors duration-300">Web Development</h3>
 						<p
-							class="text-neutral-400 text-sm leading-relaxed font-[600]"
+							class="relative z-10 text-neutral-400 text-sm leading-relaxed font-[500] group-hover:text-neutral-300 transition-colors duration-300"
 						>
 							Building fast, responsive, and fully optimized
 							modern web applications using tools like SvelteKit,
@@ -234,19 +378,23 @@
 
 					<!-- Card 3 -->
 					<div
-						class="glow-card group relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden flex flex-col gap-4"
+						class="group relative p-8 rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-2xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1)] overflow-hidden flex flex-col gap-4 transition-all duration-500 hover:border-white/20 hover:from-white/[0.09] hover:to-white/[0.04] hover:-translate-y-2 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.9),0_0_40px_-10px_rgba(168,85,247,0.2),inset_0_1px_1px_rgba(255,255,255,0.15)]"
 					>
+						<!-- Nebula Glow -->
+						<div class="absolute -top-24 -right-24 w-64 h-64 bg-purple-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
 						<div
-							class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"
+							class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-purple-500 via-purple-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
 						></div>
+						
 						<div
-							class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 mb-2"
+							class="relative z-10 w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-purple-400 mb-2 group-hover:scale-110 group-hover:bg-purple-500/10 group-hover:border-purple-500/30 transition-all duration-500 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
 						>
-							<Globe size={24} />
+							<Globe size={26} strokeWidth={1.5} />
 						</div>
-						<h3 class="text-xl font-bold">Geospatial Analysis</h3>
+						<h3 class="relative z-10 text-2xl font-bold text-white/80 group-hover:text-white transition-colors duration-300">Geospatial Analysis</h3>
 						<p
-							class="text-neutral-400 text-sm leading-relaxed font-[600]"
+							class="relative z-10 text-neutral-400 text-sm leading-relaxed font-[500] group-hover:text-neutral-300 transition-colors duration-300"
 						>
 							Translating complex spatial data into actionable
 							insights using QGIS, ArcGIS, Spatial Data
@@ -257,13 +405,17 @@
 			</section>
 
 			<!-- Projects Showcase -->
-			<section class="flex flex-col gap-12" id="projects">
+			<section use:fadeUp class="flex flex-col gap-12" id="projects">
 				<div
 					class="flex flex-col md:flex-row md:items-end justify-between gap-6"
 				>
-					<div class="flex flex-col gap-2">
-						<h2 class="text-3xl font-bold">Selected Works</h2>
-						<p class="text-neutral-400 font-[600]">
+					<div class="flex flex-col gap-4">
+						<h2
+							class="text-3xl md:text-[64px] font-semibold tracking-tight leading-none text-white"
+						>
+							Selected Works
+						</h2>
+						<p class="text-neutral-400 font-[600] text-lg">
 							A showcase of user interfaces and design systems.
 						</p>
 					</div>
@@ -344,11 +496,16 @@
 
 			<!-- Footer / Contact -->
 			<footer
+				use:fadeUp
 				class="mt-12 mb-8 pt-12 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-8"
 				id="contact"
 			>
-				<div class="flex flex-col items-center md:items-start gap-4">
-					<h2 class="text-2xl font-bold">Let's work together.</h2>
+				<div class="flex flex-col items-center md:items-start gap-6">
+					<h2
+						class="text-3xl md:text-[64px] font-semibold tracking-tight leading-none text-white text-center md:text-left"
+					>
+						Let's work together.
+					</h2>
 					<p
 						class="text-neutral-400 text-center md:text-left max-w-sm font-[600]"
 					>
