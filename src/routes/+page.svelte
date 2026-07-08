@@ -3,6 +3,7 @@
 	import StarBackground from "$lib/components/StarBackground.svelte";
 
 	import Navbar from "$lib/components/Navbar.svelte";
+	import Marquee from "$lib/components/Marquee.svelte";
 	import { fade } from "svelte/transition";
 	import {
 		ArrowUpRight,
@@ -180,24 +181,33 @@
 
 	// Action untuk animasi fade up saat scroll
 	function fadeUp(node: HTMLElement) {
-		node.classList.add('opacity-0', 'translate-y-12', 'transition-all', 'duration-[1000ms]', 'ease-out');
-		
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					node.classList.remove('opacity-0', 'translate-y-12');
-					node.classList.add('opacity-100', 'translate-y-0');
-					observer.unobserve(node);
-				}
-			});
-		}, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-		
+		node.classList.add(
+			"opacity-0",
+			"translate-y-12",
+			"transition-all",
+			"duration-[1000ms]",
+			"ease-out",
+		);
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						node.classList.remove("opacity-0", "translate-y-12");
+						node.classList.add("opacity-100", "translate-y-0");
+						observer.unobserve(node);
+					}
+				});
+			},
+			{ threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+		);
+
 		observer.observe(node);
-		
+
 		return {
 			destroy() {
 				observer.disconnect();
-			}
+			},
 		};
 	}
 </script>
@@ -251,16 +261,11 @@
 					class="flex flex-wrap items-center justify-center gap-4 mt-8"
 				>
 					<a
-						href="#projects"
+						href="/pdf/Presentation.pdf"
+						download="Presentation.pdf"
 						class="px-8 py-4 rounded-full bg-white text-bg-dark font-semibold transition-transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
 					>
-						View Projects
-					</a>
-					<a
-						href="#contact"
-						class="px-8 py-4 rounded-full border border-white/20 bg-white/5 backdrop-blur-md font-semibold text-white transition-colors hover:bg-white/10 hover:border-white/30"
-					>
-						Contact Me
+						<i class="fa-brands fa-behance"></i> Project Presentation
 					</a>
 				</div>
 			</header>
@@ -275,26 +280,25 @@
 					<h2
 						class="text-3xl md:text-[64px] font-semibold tracking-tight leading-none text-white"
 					>
-						Core Stack & Technologies
+						Core Stack & Tech
 					</h2>
 				</div>
-				<ul
-					class="grid grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
-				>
+				<!-- Desktop Grid -->
+				<ul class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
 					{#each tools as tool}
 						<li
-							class="flex items-center justify-center sm:justify-start sm:gap-4 aspect-square sm:aspect-auto p-0 sm:p-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:border-white/20 group"
+							class="flex items-center justify-start gap-4 p-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:border-white/20 group"
 							title={tool.name}
 						>
 							<div
-								class="w-full h-full sm:w-12 sm:h-12 shrink-0 sm:rounded-xl sm:bg-white/5 flex items-center justify-center sm:border sm:border-white/10 sm:group-hover:border-white/20 transition-all"
+								class="w-12 h-12 shrink-0 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-white/20 transition-all"
 							>
 								<i
-									class="{tool.icon} text-[2.5rem] sm:text-2xl group-hover:scale-110 transition-transform duration-300"
+									class="{tool.icon} text-2xl group-hover:scale-110 transition-transform duration-300"
 									style="color: {tool.color || '#ffffff'}"
 								></i>
 							</div>
-							<div class="hidden sm:flex flex-col">
+							<div class="flex flex-col">
 								<span
 									class="text-base font-bold text-white/90 group-hover:text-white transition-colors"
 									>{tool.name}</span
@@ -307,6 +311,13 @@
 						</li>
 					{/each}
 				</ul>
+
+				<!-- Mobile Marquee -->
+				<div class="flex flex-col gap-4 sm:hidden -mx-6">
+					<Marquee items={tools.slice(0, 5)} reverse={true} />
+					<Marquee items={tools.slice(5, 10)} reverse={false} />
+					<Marquee items={tools.slice(10, 14)} reverse={true} />
+				</div>
 			</section>
 
 			<!-- Expertise / Services (Bento Grid) -->
@@ -329,18 +340,24 @@
 						class="group relative p-8 rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-2xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1)] overflow-hidden flex flex-col gap-4 transition-all duration-500 hover:border-white/20 hover:from-white/[0.09] hover:to-white/[0.04] hover:-translate-y-2 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.9),0_0_40px_-10px_rgba(6,182,212,0.2),inset_0_1px_1px_rgba(255,255,255,0.15)]"
 					>
 						<!-- Nebula Glow -->
-						<div class="absolute -top-24 -right-24 w-64 h-64 bg-accent-cyan/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+						<div
+							class="absolute -top-24 -right-24 w-64 h-64 bg-accent-cyan/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+						></div>
 
 						<div
 							class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent-cyan via-accent-cyan/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
 						></div>
-						
+
 						<div
 							class="relative z-10 w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-accent-cyan mb-2 group-hover:scale-110 group-hover:bg-accent-cyan/10 group-hover:border-accent-cyan/30 transition-all duration-500 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
 						>
 							<PenTool size={26} strokeWidth={1.5} />
 						</div>
-						<h3 class="relative z-10 text-2xl font-bold text-white/80 group-hover:text-white transition-colors duration-300">UI/UX Design</h3>
+						<h3
+							class="relative z-10 text-2xl font-bold text-white/80 group-hover:text-white transition-colors duration-300"
+						>
+							UI/UX Design
+						</h3>
 						<p
 							class="relative z-10 text-neutral-400 text-sm leading-relaxed font-[500] group-hover:text-neutral-300 transition-colors duration-300"
 						>
@@ -355,18 +372,24 @@
 						class="group relative p-8 rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-2xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1)] overflow-hidden flex flex-col gap-4 transition-all duration-500 hover:border-white/20 hover:from-white/[0.09] hover:to-white/[0.04] hover:-translate-y-2 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.9),0_0_40px_-10px_rgba(16,185,129,0.2),inset_0_1px_1px_rgba(255,255,255,0.15)]"
 					>
 						<!-- Nebula Glow -->
-						<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-accent-emerald/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+						<div
+							class="absolute -bottom-24 -left-24 w-64 h-64 bg-accent-emerald/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+						></div>
 
 						<div
 							class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-accent-emerald via-accent-emerald/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
 						></div>
-						
+
 						<div
 							class="relative z-10 w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-accent-emerald mb-2 group-hover:scale-110 group-hover:bg-accent-emerald/10 group-hover:border-accent-emerald/30 transition-all duration-500 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
 						>
 							<LayoutGrid size={26} strokeWidth={1.5} />
 						</div>
-						<h3 class="relative z-10 text-2xl font-bold text-white/80 group-hover:text-white transition-colors duration-300">Web Development</h3>
+						<h3
+							class="relative z-10 text-2xl font-bold text-white/80 group-hover:text-white transition-colors duration-300"
+						>
+							Web Development
+						</h3>
 						<p
 							class="relative z-10 text-neutral-400 text-sm leading-relaxed font-[500] group-hover:text-neutral-300 transition-colors duration-300"
 						>
@@ -381,18 +404,24 @@
 						class="group relative p-8 rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-2xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1)] overflow-hidden flex flex-col gap-4 transition-all duration-500 hover:border-white/20 hover:from-white/[0.09] hover:to-white/[0.04] hover:-translate-y-2 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.9),0_0_40px_-10px_rgba(168,85,247,0.2),inset_0_1px_1px_rgba(255,255,255,0.15)]"
 					>
 						<!-- Nebula Glow -->
-						<div class="absolute -top-24 -right-24 w-64 h-64 bg-purple-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+						<div
+							class="absolute -top-24 -right-24 w-64 h-64 bg-purple-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+						></div>
 
 						<div
 							class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-purple-500 via-purple-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
 						></div>
-						
+
 						<div
 							class="relative z-10 w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-purple-400 mb-2 group-hover:scale-110 group-hover:bg-purple-500/10 group-hover:border-purple-500/30 transition-all duration-500 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
 						>
 							<Globe size={26} strokeWidth={1.5} />
 						</div>
-						<h3 class="relative z-10 text-2xl font-bold text-white/80 group-hover:text-white transition-colors duration-300">Geospatial Analysis</h3>
+						<h3
+							class="relative z-10 text-2xl font-bold text-white/80 group-hover:text-white transition-colors duration-300"
+						>
+							Geospatial Analysis
+						</h3>
 						<p
 							class="relative z-10 text-neutral-400 text-sm leading-relaxed font-[500] group-hover:text-neutral-300 transition-colors duration-300"
 						>
